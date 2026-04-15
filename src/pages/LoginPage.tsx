@@ -1,4 +1,4 @@
-import { LoginForm } from "../features/auth/components/LoginForm";
+import LoginForm from "../features/auth/components/LoginForm";
 import image from "../assets/undraw_wall-post_e47r.svg";
 
 export default function LoginPage() {
