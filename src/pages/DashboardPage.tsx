@@ -1,5 +1,6 @@
 import Header from "../layouts/header/Header";
 import { UserPlus } from "lucide-react";
+import DashboardRH from "../features/dashboard/components/DashboardRH";
 
 export default function DashboardPage() {
   return (
@@ -21,7 +22,7 @@ export default function DashboardPage() {
 
       {/* Contenu principal du tableau de bord */}
       <main className="flex-1 gap-6">
-
+        <DashboardRH />
       </main>
     </div>
   );
