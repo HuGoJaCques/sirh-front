@@ -17,7 +17,7 @@ const badgeStyles = {
 
 export default function KpiCard({ icon, badge, badgeColor, value, label }: KpiCardProps) {
     return (
-        <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200 flex flex-col gap-3">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-300 flex flex-col gap-3">
 
             {/* Icône + badge */}
             <div className="flex items-center justify-between">
