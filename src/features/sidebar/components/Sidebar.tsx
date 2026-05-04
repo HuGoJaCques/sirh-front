@@ -23,12 +23,30 @@ function NavItem({ to, icon: Icon, label, isOpen }: { to: string; icon: any; lab
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(() => window.innerWidth >= 1024);
+    const [manuelToggle, setManuelToggle] = useState(false); // Permet de differencier toggle manuel et auto au resize
 
     useEffect(() => {
-        const handleResize = () => { setIsOpen(window.innerWidth >= 1024); };
+        const handleResize = () => { 
+            // Si on passe en mobile -> ferme tjrs le sidebar et reset le toggle manuel
+            if(window.innerWidth < 1024) {
+                setIsOpen(false);
+                setManuelToggle(false);
+                return;
+            }
+            // Si on repasse en dekstop et que le user n a pas togglé manuellement
+            if(!manuelToggle) {
+                setIsOpen(true);
+            }
+        };
+
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [manuelToggle]);
+
+    const handleToggle = () => {
+        setManuelToggle(true);   // ← l'user a pris le contrôle
+        setIsOpen(prev => !prev);
+    };
 
     return (
         <aside 
@@ -40,7 +58,6 @@ export default function Sidebar() {
 
         {/* Logo + bouton toggle */}
         <div className="px-3 pt-5 pb-3 flex items-center justify-between">
-
             <SidebarText isOpen={isOpen}>
                 <div>
                 <p className="text-[15px] tracking-widest uppercase text-slate-600">SIRH</p>
@@ -51,7 +68,7 @@ export default function Sidebar() {
             </SidebarText>
         
             <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleToggle}
             className={`text-slate-400 hover:text-white transition-colors ${!isOpen ? "mx-auto" : ""}`}
             aria-label="toggle-sidebar"
             >

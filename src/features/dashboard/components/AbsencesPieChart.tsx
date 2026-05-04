@@ -9,28 +9,29 @@ const repartitionData = [
 
 export default function AbsencesPieChart() {
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-300 h-full">
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-300">
 
       <h2 className="text-sm font-semibold text-gray-800 mb-4">
         Répartition des absences
       </h2>
 
-      <ResponsiveContainer width="100%" height={160}>
-        <PieChart>
-          <Pie
-            data={repartitionData}
-            cx="50%"
-            cy="50%"
-            innerRadius={50}
-            outerRadius={75}
-            dataKey="value"
-            paddingAngle={3}
-          />
-          <Tooltip formatter={(value) => `${value}%`} />
-        </PieChart>
-      </ResponsiveContainer>
+      <div className="h-[160px] w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={repartitionData}
+              cx="50%"
+              cy="50%"
+              innerRadius={50}
+              outerRadius={75}
+              dataKey="value"
+              paddingAngle={3}
+            />
+            <Tooltip formatter={(value) => `${value}%`} />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
-      {/* Légende */}
       <div className="flex flex-col gap-1.5 mt-2">
         {repartitionData.map(({ name, value, fill }) => (
           <div key={name} className="flex items-center justify-between text-xs text-gray-600">

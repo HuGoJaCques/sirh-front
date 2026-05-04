@@ -20,9 +20,8 @@ const legende = [
 
 export default function AbsencesBarChart() {
   return (
-    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-300 h-full">
+    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-300">
 
-      {/* Titre + légende */}
       <h2 className="text-sm font-semibold text-gray-800 mb-1">
         📊 Absences par mois (2026)
       </h2>
@@ -35,15 +34,14 @@ export default function AbsencesBarChart() {
         ))}
       </div>
 
-      {/* Graphique */}
-      <ResponsiveContainer width="100%" height={200}>
-        <BarChart data={absencesData} barSize={10} barGap={3}>
-          <XAxis dataKey="mois" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#9ca3af" }} />
-          <YAxis hide />
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={absencesData} margin={{ right: 30 }}>
+          <XAxis dataKey="mois" />
+          <YAxis />
           <Tooltip cursor={{ fill: "#f3f4f6" }} />
-          <Bar dataKey="conges"  fill="#3b82f6" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="rtt"     fill="#8b5cf6" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="maladie" fill="#10b981" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="conges"  fill="#3b82f6" />
+          <Bar dataKey="rtt"     fill="#8b5cf6" />
+          <Bar dataKey="maladie" fill="#10b981" />
         </BarChart>
       </ResponsiveContainer>
 
