@@ -2,6 +2,7 @@ import { Users, Hourglass, Palmtree, Scroll } from "lucide-react";
 import KpiCard from "../../../components/kpicard/KpiCard";
 import AbsencesBarChart from "./AbsencesBarChart";
 import AbsencesPieChart from "./AbsencesPieChart";
+import CollaborateursTable from "./CollaborateursTables";
 
 export default function DashboardRH() {
     return (
@@ -16,11 +17,16 @@ export default function DashboardRH() {
             </div>
 
             {/* Graphique des absences */}
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-stretch">
-                <div className="xl:col-span-2 h-full">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start">
+                <div className="xl:col-span-2">
                     <AbsencesBarChart />
                 </div>
-                <AbsencesPieChart />
+                <AbsencesPieChart />                
+            </div>
+
+            {/* Tableau des collaborateurs */}
+            <div className="flex-1 min-h-0">
+                <CollaborateursTable />
             </div>
         </div>
     )
